@@ -1,6 +1,6 @@
 import os
 
-from transformacion_urbana.settings.common import *
+from pydokoro.settings.common import *
 
 DEBUG = False
 
