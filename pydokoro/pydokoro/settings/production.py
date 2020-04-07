@@ -2,10 +2,14 @@ import os
 
 from pydokoro.settings.common import *
 
-DEBUG = False
+DEBUG = True
 
 # SECURITY WARNING: update this when you have the production host
-ALLOWED_HOSTS = ['167.99.239.232/',
-                 'http://167.99.239.232//']
+ALLOWED_HOSTS = ['167.99.239.232',
+                 'http://167.99.239.232/',
+                 'pydokoro.com',
+                 'www.pydokoro.com',
+                 'http://www.pydokoro.com',
+                 'https://www.pydokoro.com']
 
 SECRET_KEY = 'hheem1q8r(srmmk#k8*n!v-0s+!%=&18#4$ydgy3ae_+v*!rze'
