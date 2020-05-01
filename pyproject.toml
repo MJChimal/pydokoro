@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "pydokoro"
+version = "0.1.0"
+description = ""
+authors = ["MJChimal <mjchimal@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "3.8.2"
+django = "^3.0.5"
+djangorestframework = "^3.11.0"
+django-cors-headers = "^3.2.1"
+djangorestframework_simplejwt = "^4.4.0"
+drf-yasg = "^1.17.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

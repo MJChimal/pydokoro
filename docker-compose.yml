@@ -1,0 +1,53 @@
+version: "3.6"
+services:
+  db:
+    image: "mysql:8.0.20"
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - sqldata:/var/lib/postgresql/data
+    networks:
+      - webnet
+    env_file: ./config/.env 
+  
+  web:
+    <<: &web
+
+      image: "pydokoro:dev"
+      build: 
+        context: .
+        dockerfile: ./docker/django/Dockerfile
+        args:
+          DJANGO_ENV: development
+        cache_from:
+          - "pydokoro:dev"
+          - "pydokoro:latest"
+          - "*"
+      ports:
+        - "8000:8000"
+
+      volumes:
+        - django-static:/var/www/django/static
+      
+      depends_on:
+        - db
+      
+      networks:
+        - webnet
+        - proxynet
+
+      env_file: ./config/.env
+      environment: 
+        DJANGO_DATABASE_HOST: db
+
+      command: python -Wd manage.py runserver 0.0.0.0:8000
+
+networks:
+
+  proxynet:
+
+  webnet:
+
+volumes:
+  sqldata:
+  django-static:
